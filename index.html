@@ -3,30 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Questão Aberta - Estruturas de Dados em Rust</title>
-  <!-- Bootstrap CSS -->
+  <title>Questão Aberta - Otimização Avançada de Bancos Relacionais</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container py-5">
-    <div class="card">
-      <div class="card-header">
+    <div class="card border-danger">
+      <div class="card-header bg-danger text-white">
         <h1 class="card-title mb-0">Questão Aberta - 10 pontos</h1>
       </div>
       <div class="card-body">
-        <p>Em Rust, projete um módulo de <strong>roteamento e cache de mapas</strong> que deve:</p>
+        <p>Você foi contratado(a) para otimizar o desempenho de um banco de dados relacional PostgreSQL que armazena dados de uma aplicação nacional de comércio eletrônico com milhões de registros distribuídos em dezenas de tabelas. A equipe relata que:</p>
         <ul>
-          <li>Armazenar e buscar endereços de forma eficiente;</li>
-          <li>Indexar locais próximos a um ponto geográfico;</li>
-          <li>Modelar a malha viária (grafo) para cálculo de rotas e considerar bloqueios dinâmicos;</li>
-          <li>Gerenciar fila de requisições e histórico de rotas (undo/redo);</li>
-          <li>Garantir segurança de memória (ownership/borrowing).</li>
+          <li>Consultas simples em relatórios de vendas demoram até 45 segundos;</li>
+          <li>Há travamentos esporádicos em operações de escrita durante campanhas promocionais;</li>
+          <li>Há divergências em relatórios gerados simultaneamente por usuários diferentes;</li>
+          <li>A base cresceu muito nos últimos dois anos e há suspeitas de má utilização de índices e joins ineficientes.</li>
         </ul>
-        <p><strong>Pergunta:</strong> Para cada requisito, indique <strong>qual estrutura de dados</strong> (vetor, lista ligada, fila, pilha, deque, árvore de busca/AVL, grafo, tabela hash) usar e como o <strong>modelo de memória do Rust</strong> evita erros como <em>use-after-free</em> ou data races. Inclua um pseudocódigo curto (3–5 linhas) em Rust ilustrando o uso de ponteiros seguros.</p>
+        <p><strong>Pergunta:</strong> Com base nesse cenário realista, escreva um plano técnico completo contendo:</p>
+        <ol>
+          <li>As principais causas possíveis de lentidão em consultas relacionais (considere cardinalidade, estimativas incorretas, planos de execução, etc);</li>
+          <li>Decisões sobre onde e como aplicar <strong>índices compostos, parciais e GIN</strong> e como avaliaria seus impactos;</li>
+          <li>Como você validaria e otimizaria os planos de execução SQL (EXPLAIN ANALYZE);</li>
+          <li>Estratégias para mitigar problemas de concorrência (níveis de isolamento, MVCC, deadlocks);</li>
+          <li>Quando e por que desnormalizar, e como garantir consistência mesmo após a desnormalização;</li>
+          <li>Como particionar a base (por range, hash ou list) e quando essa estratégia melhora performance;</li>
+          <li>Uso de <strong>materialized views, caching externo (Redis/Memcached) e triggers</strong> para acelerar consultas e reduzir carga do banco;</li>
+          <li>Como monitorar e manter a performance de forma contínua com ferramentas como pg_stat_statements, auto_explain ou pgBadger.</li>
+        </ol>
+        <p><strong>Requisito:</strong> Justifique tecnicamente todas as decisões, referenciando aspectos internos do otimizador do PostgreSQL quando necessário. Inclua trechos de SQL (reais ou pseudocódigo) demonstrando pelo menos:</p>
+        <ul>
+          <li>A criação de um índice GIN eficiente;</li>
+          <li>Uma consulta lenta otimizada com hints ou reescrita usando CTEs ou window functions;</li>
+          <li>Como analisar um plano de execução mal distribuído;</li>
+          <li>Como particionar uma tabela grande e reescrever queries para tirar proveito disso.</li>
+        </ul>
+        <p class="text-danger"><strong>Esta questão exige articulação avançada de conceitos, exemplos práticos e domínio de performance tuning em sistemas relacionais.</strong></p>
       </div>
     </div>
   </div>
-  <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
